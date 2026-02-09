@@ -21,7 +21,7 @@ with open("features.yaml", "r", encoding="utf-8") as f:
 TARGET = cfg["target"]
 RANDOM_SEED = 42
 RECOVERY_MODEL_PATH = cfg["model_path"]
-DATA_PATH = r"C:\Users\Kenessary.Garifulla\Desktop\recov_train\data_master_till_csv.xls"
+DATA_PATH = cfg["data_path"]
 
 datamaster = pd.read_csv(DATA_PATH, index_col=0, parse_dates=True)
 
