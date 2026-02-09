@@ -13,12 +13,17 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 
 from new_preprocessing_logic import clean, get_train_test, impute_inter_fbfill, handle_outliers
 from config import feats
+import yaml
 
-TARGET = 'recovery_rougher_scavenger_pi'
+with open("features.yaml", "r", encoding="utf-8") as f:
+    cfg = yaml.safe_load(f)
+
+TARGET = cfg["target"]
 RANDOM_SEED = 42
-MODEL_PATH = "xgb_model.pkl"
+RECOVERY_MODEL_PATH = cfg["model_path"]
+DATA_PATH = r"C:\Users\Kenessary.Garifulla\Desktop\recov_train\data_master_till_csv.xls"
 
-datamaster = pd.read_csv(r"C:\Users\Kenessary.Garifulla\Desktop\recov_train\data_master_till_csv.xls", index_col=0, parse_dates=True)
+datamaster = pd.read_csv(DATA_PATH, index_col=0, parse_dates=True)
 
 data_master = datamaster[feats+[TARGET]]
 
