@@ -20,6 +20,7 @@ TARGET = cfg["target"]
 RECOVERY_MODEL_PATH = cfg["model_path"]
 cntrl = cfg["controls"]
 sts = cfg["stats"]
+DATA_PATH = fg["data_path"]
 
 with open("xgb_model.pkl", 'rb') as f:
     test_model = pickle.load(f)
@@ -39,7 +40,7 @@ model = RecoveryModel(
 
 if __name__ == '__main__':
 
-    data_master= pd.read_csv(r"C:\Users\Kenessary.Garifulla\Desktop\recov_train\data_master_till_csv.xls", index_col=0, parse_dates=True)[feats+[TARGET]]
+    data_master= pd.read_csv(DATA_PATH, index_col=0, parse_dates=True)[feats+[TARGET]]
  
     df = clean(data_master, timefrom='2020-12-01')
 
